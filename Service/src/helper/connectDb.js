@@ -2,11 +2,14 @@ const mongoose = require("mongoose");
 const connectDB = async () => {
   try {
     await mongoose.connect(
-      "mongodb+srv://mimanshaadhikari78:B8BxRf1o0tGfzEZV@cluster0.nodxo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+      "mongodb+srv://mimanshaadhikari78:ONdfWIF6kA6AkZs2@testdb.to514.mongodb.net/?retryWrites=true&w=majority&appName=testDB",
       {
         dbName: "RoomFinder",
       }
     );
+
+    const password = "ONdfWIF6kA6AkZs2";
+    const username = "mimanshaadhikari78";
     console.log("DB connection established");
   } catch (error) {
     console.log(error);
