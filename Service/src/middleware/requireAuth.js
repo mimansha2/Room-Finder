@@ -20,7 +20,7 @@ const requireAuth = async (req, res, next) => {
   const getUserNickName = async () => {
     try {
       const response = await axios.get(
-        "https://dev-u78k2kin20rm4026.us.auth0.com/userinfo",
+        "https://dev-wrrbp4yvtky71znh.us.auth0.com/userinfo",
         config
       );
 

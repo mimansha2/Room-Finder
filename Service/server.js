@@ -19,8 +19,8 @@ app.use(express.json());
 createAdminUser();
 
 const jwtCheck = auth({
-  audience: "RoomFinderServer",
-  issuerBaseURL: "https://dev-u78k2kin20rm4026.us.auth0.com/",
+  audience: "RoomFinderBackend",
+  issuerBaseURL: "https://dev-wrrbp4yvtky71znh.us.auth0.com/",
   tokenSigningAlg: "RS256",
 });
 

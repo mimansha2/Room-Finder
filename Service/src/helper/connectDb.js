@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const connectDB = async () => {
   try {
-    mongoose.connect(
-      "mongodb+srv://amanoli1000:KGBIaQoQh9AnpWsv@test.pcwhnrr.mongodb.net/?retryWrites=true&w=majority&appName=test",
+    await mongoose.connect(
+      "mongodb+srv://mimanshaadhikari78:B8BxRf1o0tGfzEZV@cluster0.nodxo.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
       {
         dbName: "RoomFinder",
       }

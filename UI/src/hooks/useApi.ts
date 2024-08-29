@@ -1,9 +1,12 @@
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 
+// export const CLOUDINARY_URL =
+//   "https://api.cloudinary.com/v1_1/dyyhhmcv7/image/upload";
+// export const CLOUDINARY_UPLOAD_PRESET = "uthcikhk";
 export const CLOUDINARY_URL =
-  "https://api.cloudinary.com/v1_1/dyyhhmcv7/image/upload";
-export const CLOUDINARY_UPLOAD_PRESET = "uthcikhk";
+  "https://api.cloudinary.com/v1_1/dqpjegjzc/image/upload";
+export const CLOUDINARY_UPLOAD_PRESET = "Room Finder";
 
 const useApi = (controllerName: string) => {
   const { user } = useAuth();

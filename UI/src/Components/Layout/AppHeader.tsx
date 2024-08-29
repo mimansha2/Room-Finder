@@ -34,6 +34,8 @@ const AppHeader = () => {
   const { user: defaultUser, logout } = useAuth0();
   const { user: userRoles } = useAuth();
 
+  console.log("userRoles", defaultUser);
+
   const handleLogout = () => {
     queryClient.clear();
     localStorage.clear();
