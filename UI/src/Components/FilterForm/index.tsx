@@ -15,12 +15,6 @@ const { RangePicker } = DatePicker;
 const { Option } = Select;
 
 const FilterForm = (props: {
-  onLocationChange: (locationName: string) => void;
-  onBedroomCountChange: (bedroomCount: string) => void;
-  onHallCountChange: (hallCount: number) => void;
-  onKitchenCountChange: (kitchenCount: number) => void;
-  onDateRangeChange: (dateArr: []) => void;
-  onPriceRangeChange: (priceArr: []) => void;
   onFormValueChange: (formValues: any) => void;
 }) => {
   const [form] = useForm();
@@ -38,26 +32,16 @@ const FilterForm = (props: {
     >
       {/* Location Field */}
       <Form.Item name="location" label="Location">
-        <Input
-          autoFocus
-          onChange={(e) => {
-            props.onLocationChange(e.target.value);
-          }}
-        />
+        <Input autoFocus />
       </Form.Item>
       <Form.Item name="bedroom" label="Bedroom">
-        <Input
-          type="number"
-          onChange={(e) => {
-            props.onBedroomCountChange(e.target.value);
-          }}
-        />
+        <Input min={0} type="number" />
       </Form.Item>
       <Form.Item name="hall" label="Hall">
-        <Input />
+        <Input min={0} type="number" />
       </Form.Item>
       <Form.Item name="kitchen" label="Kitchen">
-        <Input />
+        <Input min={0} type="number" />
       </Form.Item>
       <Form.Item name="dateRange" label="Date Range">
         <RangePicker
@@ -72,13 +56,11 @@ const FilterForm = (props: {
       <Form.Item name="priceRange" label="Price Range">
         <Slider
           range
-          min={0}
-          max={1000}
-          step={10}
-          tooltip={{ formatter: (value) => `$${value}` }}
-          onChange={(val) => {
-            console.log("val", val);
-          }}
+          min={1000}
+          max={100000}
+          step={1000}
+          defaultValue={[1000, 100000]}
+          tooltip={{ formatter: (value) => `Rs. ${value}` }}
         />
       </Form.Item>
 

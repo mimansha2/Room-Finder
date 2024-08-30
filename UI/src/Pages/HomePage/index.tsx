@@ -89,15 +89,34 @@ const HomePage = () => {
     // const filteredOutput = postData.filter((x) =>
     //   Object.entries(formValues).every(([key, value]) => x[key] === value)
     // );
-    const filteredOutput = postData.filter(
+    let filteredOutput = data.filter(
       (x: any) =>
         x.location
           .toLowerCase()
-          .includes(formValues.location.toLowerCase() ?? "") &&
-        x.bedroom > Number(formValues.bedroom ?? 0)
+          .includes(formValues.location?.toLowerCase() ?? "") &&
+        x.bedroom >= Number(formValues.bedroom ?? 0) &&
+        x.hall >= Number(formValues.hall ?? 0) &&
+        x.kitchen >= Number(formValues.kitchen ?? 0)
     );
 
-    console.log("filteredOutput", filteredOutput);
+    if (formValues.priceRange?.length > 0) {
+      filteredOutput = filteredOutput.filter(
+        (x: any) =>
+          x.price >= formValues.priceRange[0] &&
+          x.price <= formValues.priceRange[1]
+      );
+    }
+
+    if (formValues.dateRange?.length > 0) {
+      filteredOutput = filteredOutput.filter(
+        (x: any) =>
+          new Date(x.createdAt) >= new Date(formValues.dateRange[0]) &&
+          new Date(x.createdAt) <= new Date(formValues.dateRange[1])
+      );
+    }
+
+    setPostData(filteredOutput);
+    setPostData(filteredOutput);
   };
 
   return (
@@ -115,31 +134,6 @@ const HomePage = () => {
             console.log("got", formValues);
             filterFunction(formValues);
           }}
-          onLocationChange={(location) => {
-            // filterFunction({ location: location });
-            // if (!location) {
-            //   const newFilter: any = data.filter((x: any) =>
-            //     x.location.toLowerCase().includes("")
-            //   );
-            //   setPostData(newFilter);
-            //   return;
-            // }
-            // setPostData((val: any) => {
-            //   return val.filter((x: any) =>
-            //     x.location.toLowerCase().includes(location.toLowerCase())
-            //   );
-            // });
-          }}
-          onBedroomCountChange={(bedroomCount) => {
-            // filterFunction({ bedroom: Number(bedroomCount) });
-            // setPostData(
-            //   data.filter((x: any) => x.bedroom === Number(bedroomCount))
-            // );
-          }}
-          onDateRangeChange={() => {}}
-          onHallCountChange={() => {}}
-          onKitchenCountChange={() => {}}
-          onPriceRangeChange={() => {}}
         />
       </Sider>
       <Content style={{ padding: "0 24px", minHeight: 280 }}>
